@@ -1,0 +1,39 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": [
+    "/lib/**/*"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": [
+      "warn",
+      "always-multiline"
+    ],
+    "no-multiple-empty-lines": [
+      "warn"
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  }
+}
