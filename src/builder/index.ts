@@ -28,10 +28,10 @@ function addMarkers(parms: [string, string][], markers: MarkerGroup | MarkerGrou
 function addPaths(parms: [string, string][], paths: Path | Path[] | undefined) {
   if (Array.isArray(paths)) {
     paths.forEach((x) => {
-      addParm(parms, "paths", buildPath(x));
+      addParm(parms, "path", buildPath(x));
     });
   } else if (paths) {
-    addParm(parms, "paths", buildPath(paths));
+    addParm(parms, "path", buildPath(paths));
   }
 }
 
