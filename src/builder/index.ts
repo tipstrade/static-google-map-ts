@@ -61,11 +61,7 @@ function getSize(size: SizeType): string {
   return `${size.width}x${size.height}`;
 }
 
-export const buildMap = (options: Omit<GoogleMapImage, "directions">, directions?: never): string => {
-  if (directions) {
-    throw new Error("directions are not supported.");
-  }
-
+export const buildMap = (options: GoogleMapImage): string => {
   const { center, zoom, markers } = options;
   const hasMarkers = (Array.isArray(markers) && markers.length) || markers;
 
