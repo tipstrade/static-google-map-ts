@@ -45,14 +45,6 @@ function addVisible(parms: [string, string][], visible: LocationType | LocationT
   }
 }
 
-function buildQuery(parms: [string, string][]): string {
-  const encoded = parms.map(([name, value]) => {
-    return `${name}=${encodeURIComponent(value)}`;
-  });
-
-  return encoded.join("&");
-}
-
 function getSize(size: SizeType): string {
   if (typeof size === "string") {
     return size;
@@ -88,5 +80,9 @@ export const buildMap = (options: GoogleMapImage): string => {
   addParm(parms, "key", options.key);
   addParm(parms, "signature", options.signature);
 
-  return BaseUrl + "?" + buildQuery(parms);
+  return parms.reduce((uri, item, index) => {
+    return uri
+      + (index ? "&" : "?")
+      + item[0] + "=" + item[1];
+  }, BaseUrl);
 }
