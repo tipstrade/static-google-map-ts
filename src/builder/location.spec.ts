@@ -13,4 +13,13 @@ describe("buildLocation", () => {
   it("Handles LatLngLiteral", () => {
     expect(buildLocation({ lat: 51, lng: -1 })).toBe("51,-1");
   });
+
+  it("Handles LatLng", () => {
+    const latlng = {
+      lat: () => 51,
+      lng: () => -1,
+    }
+
+    expect(buildLocation(latlng)).toBe("51,-1");
+  });
 })

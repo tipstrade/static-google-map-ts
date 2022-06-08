@@ -3,13 +3,16 @@ import { LocationType } from "../models";
 function buildLocation(location: LocationType): string;
 function buildLocation(location: LocationType | undefined): string | undefined;
 function buildLocation(location: LocationType | undefined): string | undefined {
-  if (typeof location === "string") {
+  if (!location) {
+    return;
+  } else if (typeof location === "string") {
     return location;
-  } else if (location) {
-    return `${location.lat},${location.lng}`;
   }
 
-  return;
+  const lat = typeof location.lat === "number" ? location.lat : location.lat();
+  const lng = typeof location.lng === "number" ? location.lng : location.lng();
+
+  return `${lat},${lng}`;
 }
 
 export {

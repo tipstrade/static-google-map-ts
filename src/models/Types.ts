@@ -1,5 +1,5 @@
 import { Anchor } from "./Anchor";
-import { LatLngLiteral } from "./LatLngLiteral";
+import { LatLng, LatLngLiteral } from "./LatLngLiteral";
 import { Size } from "./Size";
 
 export type AnchorType = "left" | "right" | "center" | "topleft" | "topright" | "bottomleft" | "bottomright" | string | Anchor;
@@ -8,7 +8,7 @@ export type ColorType = "black" | "brown" | "green" | "purple" | "yellow" | "blu
 
 export type ImageFormatType = "png" | "png8" | "png32" | "gif" | "jpg" | "jpg-baseline";
 
-export type LocationType = string | LatLngLiteral;
+export type LocationType = string | LatLngLiteral | LatLng;
 
 export type MapType = "roadmap" | "satellite" | "terrain" | "hybrid";
 
