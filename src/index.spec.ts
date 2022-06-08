@@ -6,22 +6,6 @@ describe("Module", () => {
       expect(staticMapUrl(SimpleMock)).toBe(SimpleUrl);
     });
 
-    it("Throws with no center or markers", () => {
-      expect(() => {
-        staticMapUrl({
-          ...SimpleMock,
-          center: undefined,
-        })
-      }).toThrow();
-
-      expect(() => {
-        staticMapUrl({
-          ...SimpleMock,
-          zoom: undefined,
-        })
-      }).toThrow();
-    });
-
     it("Contains markers", () => {
       expect(staticMapUrl({
         ...SimpleMock,

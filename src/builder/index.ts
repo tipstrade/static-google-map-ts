@@ -62,20 +62,7 @@ function getSize(size: SizeType): string {
 }
 
 export const buildMap = (options: GoogleMapImage): string => {
-  const { center, zoom, markers } = options;
-  const hasMarkers = (Array.isArray(markers) && markers.length) || markers;
-
-  /** Center and zoom are required if there are no markers. */
-  if (!hasMarkers) {
-    if (!center) {
-      throw new Error("Center is required if no markers are set.");
-    }
-
-    if (!zoom) {
-      throw new Error("Zoom is required if no markers are set.");
-    }
-  }
-
+  const { center, zoom } = options;
   const parms: [string, string][] = [];
 
   // Location parameters
