@@ -1,4 +1,4 @@
-import { GoogleMapImage, SizeType } from "../models";
+import { GoogleMapImage, LocationType, MarkerGroup, Path, SizeType } from "../models";
 import { buildLocation } from "./location";
 import { buildMarker } from "./marker";
 import { buildPath } from "./path";
@@ -13,6 +13,36 @@ function addParm(parms: [string, string][], key: string, value: string | number 
   }
 
   parms.push([key, value]);
+}
+
+function addMarkers(parms: [string, string][], markers: MarkerGroup | MarkerGroup[] | undefined) {
+  if (Array.isArray(markers)) {
+    markers.forEach((x) => {
+      addParm(parms, "markers", buildMarker(x));
+    });
+  } else if (markers) {
+    addParm(parms, "markers", buildMarker(markers));
+  }
+}
+
+function addPaths(parms: [string, string][], paths: Path | Path[] | undefined) {
+  if (Array.isArray(paths)) {
+    paths.forEach((x) => {
+      addParm(parms, "paths", buildPath(x));
+    });
+  } else if (paths) {
+    addParm(parms, "paths", buildPath(paths));
+  }
+}
+
+function addVisible(parms: [string, string][], visible: LocationType | LocationType[] | undefined) {
+  if (Array.isArray(visible)) {
+    visible.forEach((x) => {
+      addParm(parms, "visible", buildLocation(x));
+    });
+  } else if (visible) {
+    addParm(parms, "visible", buildLocation(visible));
+  }
 }
 
 function buildQuery(parms: [string, string][]): string {
@@ -36,7 +66,7 @@ export const buildMap = (options: Omit<GoogleMapImage, "directions">, directions
     throw new Error("directions are not supported.");
   }
 
-  const { center, zoom, markers, paths, visible } = options;
+  const { center, zoom, markers } = options;
   const hasMarkers = (Array.isArray(markers) && markers.length) || markers;
 
   /** Center and zoom are required if there are no markers. */
@@ -66,31 +96,9 @@ export const buildMap = (options: Omit<GoogleMapImage, "directions">, directions
 
   // Feature parameters
   addParm(parms, "map_id", options.mapId);
-
-  if (Array.isArray(markers)) {
-    markers.forEach((x) => {
-      addParm(parms, "markers", buildMarker(x));
-    });
-  } else if (markers) {
-    addParm(parms, "markers", buildMarker(markers));
-  }
-
-  if (Array.isArray(paths)) {
-    paths.forEach((x) => {
-      addParm(parms, "markers", buildPath(x));
-    });
-  } else if (paths) {
-    addParm(parms, "markers", buildPath(paths));
-  }
-
-  if (Array.isArray(visible)) {
-    visible.forEach((x) => {
-      addParm(parms, "markers", buildLocation(x));
-    });
-  } else if (visible) {
-    addParm(parms, "markers", buildLocation(visible));
-  }
-
+  addMarkers(parms, options.markers);
+  addPaths(parms, options.paths);
+  addVisible(parms, options.visible);
   addParm(parms, "style", options.style);
 
   // Key and signature parameters
