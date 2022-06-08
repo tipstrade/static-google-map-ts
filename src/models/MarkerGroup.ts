@@ -1,5 +1,6 @@
 import { AnchorType, ColorType, LocationType, MarkerSizeType, ScaleType } from "./Types";
 
+/** Represents a group of markers. */
 export interface MarkerGroup {
   /** Specifies the size of marker */
   size?: MarkerSizeType;

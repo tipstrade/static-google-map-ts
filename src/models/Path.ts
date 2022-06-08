@@ -12,8 +12,8 @@ export interface Path {
   geodesic?: boolean;
   /**
    * The list of points making up the path.
-   * An array of locations that make up the path or an encoded polyline representation of the path.
-   * See: https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+   * @description Can be an array of `LocationType` objects or a string containing an encoded polyline representation of the path.
+   * @see https://developers.google.com/maps/documentation/utilities/polylinealgorithm
    */
   points: LocationType[] | string;
 }

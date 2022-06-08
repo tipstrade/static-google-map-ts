@@ -53,7 +53,12 @@ function getSize(size: SizeType): string {
   return `${size.width}x${size.height}`;
 }
 
-export const buildMap = (options: GoogleMapImage): string => {
+/**
+ * Returns a string containing the URL to the Static Map generated with the specified options.
+ * @param options The map options.
+ * @returns A string containing the URL to the map.
+ */
+export const staticMapUrl = (options: GoogleMapImage): string => {
   const { center, zoom } = options;
   const parms: [string, string][] = [];
 
