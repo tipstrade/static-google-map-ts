@@ -21,6 +21,28 @@ describe("Module", () => {
         })
       }).toThrow();
     });
+
+    it("Contains markers", () => {
+      expect(staticMapUrl({
+        ...SimpleMock,
+        markers: { location: "TipsTrade" },
+      })).toContain("markers")
+    });
+
+    it("Contains paths", () => {
+      expect(staticMapUrl({
+        ...SimpleMock,
+        paths: { points: "abc" },
+      })).toContain("path")
+    });
+
+    it("Contains visible", () => {
+      expect(staticMapUrl({
+        ...SimpleMock,
+        visible: "TipsTrade",
+      })).toContain("visible")
+    });
+
   });
 });
 
