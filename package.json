@@ -1,6 +1,6 @@
 {
   "name": "static-google-map-ts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A strongly typed URL builder for Google Maps Static.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
