@@ -17,7 +17,7 @@ describe("Module", () => {
       expect(staticMapUrl({
         ...SimpleMock,
         paths: { points: "abcdef" },
-      })).toContain("path=enc:abcdef")
+      })).toContain("path=enc%3Aabcdef")
     });
 
     it("Contains visible", () => {

@@ -20,7 +20,7 @@ export function buildMarker(marker: MarkerGroup): string {
     parts.push(`scale:${scale}`);
   }
   if (iconURL) {
-    parts.push(`icon:${encodeURIComponent(iconURL)}`);
+    parts.push(`icon:${iconURL}`);
 
     if (anchor) {
       parts.push(`anchor:${buildAnchor(anchor)}`);

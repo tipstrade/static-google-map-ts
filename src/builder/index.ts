@@ -83,6 +83,7 @@ export const buildMap = (options: GoogleMapImage): string => {
   return parms.reduce((uri, item, index) => {
     return uri
       + (index ? "&" : "?")
-      + item[0] + "=" + item[1];
+      + item[0] + "=" + encodeURIComponent(item[1])
+      ;
   }, BaseUrl);
 }

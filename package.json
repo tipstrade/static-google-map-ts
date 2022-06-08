@@ -1,6 +1,6 @@
 {
   "name": "static-google-map-ts",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A strongly typed URL builder for Google Maps Static.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "barrelsby": "^2.3.4",
+    "dotenv": "^16.0.1",
     "eslint": "^8.14.0",
     "eslint-plugin-import": "^2.26.0",
     "jasmine": "^4.1.0",
